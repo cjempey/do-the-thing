@@ -1,0 +1,25 @@
+<section>
+  <p>
+    view-axes works!
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Weight</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let axis of axes">
+        <td>{{axis.name}}</td>
+        <td>{{axis.description}}</td>
+        <td>{{axis.weight}}</td>
+        <td> <button type="button" (click)="deleteAxis(axis); $event.stopPropagation();">Delete</button> </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr/>
+  <app-add-axis></app-add-axis>
+</section>
