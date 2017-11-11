@@ -1,8 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<mat-sidenav-container>
-<mat-sidenav #sidenav mode="side" opened="false">
-  Content!
+<mat-toolbar color="primary">
+  <button type="button" mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-sidenav-container class="content-area">
+<mat-sidenav #sidenav mode="side" opened="false" color="primary">
+  <mat-nav-list>
+    <a mat-list-item routerLink="/" routerLinkActive="active">Dashboard</a>
+    <a mat-list-item routerLink="/axes" routerLinkActive="active">Manage Axes</a>
+  </mat-nav-list>
 </mat-sidenav>
-<button type="button" mat-button (click)="sidenav.toggle()">Open sidenav</button>
-<app-view-axes></app-view-axes>
+<div class="content-pane-container">
+  <router-outlet></router-outlet>
+</div>
 </mat-sidenav-container>
