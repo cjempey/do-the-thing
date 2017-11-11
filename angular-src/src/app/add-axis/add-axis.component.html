@@ -1,3 +1,21 @@
-<p>
-  add-axis works!
-</p>
+<div class="container">
+  <h4>Add a new Axis of Growth</h4>
+  <form (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <!-- <label for="name">Name</label> -->
+      <input matInput placeholder="Name" type="text" [(ngModel)]="newAxis.name" name="name" required />
+      <mat-hint align="start">Short keyword</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <!-- <label for="Description">Description</label> -->
+      <input matInput placeholder="Description" type="text" [(ngModel)]="newAxis.description" name="description" required />
+      <mat-hint align="start">How do you want to grow?</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <!-- <label for="Weight">Weight</label> -->
+      <input matInput placeholder="Weight" type="number" [(ngModel)]="newAxis.weight" name="weight" required />
+      <mat-hint>How important is this direction?</mat-hint>
+    </mat-form-field>
+    <button type="submit">Submit</button>
+  </form>
+</div>

@@ -27,4 +27,18 @@ export class AxisService {
       .map(res => res.json());
   }
 
+  public addAxis(newAxis: Axis) {
+    const URI = `${this.serverApi}/api/axis`;
+    const headers = new Headers;
+    const body = JSON.stringify({
+      name: newAxis.name,
+      description: newAxis.description,
+      weight: newAxis.weight
+    });
+    console.log (`Adding new axis: ${body}`);
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(URI, body, {headers: headers})
+      .map(res => res.json());
+  }
+
 }
