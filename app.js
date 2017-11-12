@@ -14,6 +14,7 @@ const port = 3000;
 
 mongoose.connect(dbConfig.database, dbConfig.options);
 mongoose.Promise = global.Promise;
+mongoose.set('debug', true);
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));

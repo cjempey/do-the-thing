@@ -14,6 +14,11 @@ module.exports.allAxes = (callback) => {
     Axis.find(callback);
 };
 
+module.exports.fetchAxisById = (id, callback) => {
+    let query = { _id : id };
+    Axis.find(query, callback);
+};
+
 module.exports.addAxis = (newAxis, callback) => {
     newAxis.save(callback);
 };
