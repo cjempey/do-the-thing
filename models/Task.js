@@ -32,7 +32,7 @@ module.exports.allTasks = (callback) => {
 module.exports.fetchTaskById = (id, callback) => {
     let query = { _id : id };
     // console.log ('Model call to Task.fetchTaskById');
-    Task.find(query, callback);
+    Task.findOne(query, callback);
 };
 
 module.exports.incompleteTasks = (callback) => {

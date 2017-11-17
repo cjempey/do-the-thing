@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 
-import { HttpModule } from '@angular/http';
+// import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -17,13 +18,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppComponent } from './app.component';
 import { AddAxisComponent } from './add-axis/add-axis.component';
 import { ViewAxesComponent } from './view-axes/view-axes.component';
 import { AxisService } from './services/axis.service';
+import { TaskService } from './services/task.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AxisCardComponent } from './axis-card/axis-card.component';
+import { TaskCardComponent } from './task-card/task-card.component';
+import { NumberAsStarsComponent } from './number-as-stars/number-as-stars.component';
+import { TaskEntryComponent } from './task-entry/task-entry.component';
 
 
 const appRoutes: Routes = [
@@ -38,7 +46,10 @@ const appRoutes: Routes = [
     AddAxisComponent,
     ViewAxesComponent,
     DashboardComponent,
-    AxisCardComponent
+    AxisCardComponent,
+    TaskCardComponent,
+    NumberAsStarsComponent,
+    TaskEntryComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -46,7 +57,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // for debug
     ),
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
     MatSidenavModule,
     MatButtonModule,
@@ -57,10 +68,13 @@ const appRoutes: Routes = [
     MatListModule,
     MatToolbarModule,
     MatCardModule,
+    MatGridListModule,
+    MatChipsModule,
+    MatTooltipModule,
 
     BrowserAnimationsModule
   ],
-  providers: [ AxisService ],
+  providers: [ AxisService, TaskService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

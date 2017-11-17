@@ -27,7 +27,7 @@ export class AddAxisComponent implements OnInit {
 
   public onSubmit() {
     this.AxisServ.addAxis(this.newAxis).subscribe(
-      response => {if (response.success === true) {
+      response => {if (response['success'] === true) {
         console.log(response);
         // if success, update view-axis component
         this.addAxis.emit(this.newAxis);

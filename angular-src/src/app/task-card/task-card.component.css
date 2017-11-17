@@ -1,0 +1,11 @@
+.contentContainer {
+  display: flex;
+}
+
+.descContainer {
+  flex: 3;
+}
+
+.valContainer {
+  flex: 1;
+}

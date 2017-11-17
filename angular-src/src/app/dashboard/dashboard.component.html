@@ -1,6 +1,8 @@
-<div style="background-color:chartreuse">
-<p>
-  dashboard works!
-</p>
-<app-axis-card *ngFor="let axis of axes" [axis]="axis"></app-axis-card>
+<div>
+<!-- <h3>Axes</h3>
+<app-axis-card *ngFor="let axis of axes" [axis]="axis"></app-axis-card> -->
+<hr/>
+<h3>Tasks</h3>
+<button mat-button (click)="resetTasks()">Reset Tasks</button>
+<app-task-card [task]="currentTask" [@task]="currentTask" (taskComplete)="taskComplete($event)"></app-task-card>
 </div>

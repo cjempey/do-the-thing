@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-card-title>
+    {{task.name}}
+  </mat-card-title>
+  <mat-card-subtitle>
+      {{task.status}}
+  </mat-card-subtitle>
+  <section class="contentContainer">
+    <div class="descContainer">
+      <p class="descriptionDisplay">{{task.description}}</p>
+    </div>
+    <div class="valContainer">
+      <mat-list>
+          <mat-list-item *ngFor="let val of task.values">
+            {{val?.axis?.name}}: <app-number-as-stars [howMany]="val?.value"></app-number-as-stars>
+          </mat-list-item>
+      </mat-list>
+    </div>
+  </section>
+  <mat-card-actions>
+    <button mat-mini-fab aria-label="done" matTooltip="Done" matTooltipShowDelay="500" matTooltipHideDelay="1000" (click)="taskDone()">
+      <mat-icon>done</mat-icon>
+    </button>
+    <button mat-mini-fab aria-label="defer" matTooltip="Defer" matTooltipShowDelay="500" matTooltipHideDelay="1000">
+      <mat-icon>alarm</mat-icon>
+    </button>
+    <button mat-mini-fab aria-label="start" matTooltip="Start" matTooltipShowDelay="500" matTooltipHideDelay="1000">
+      <mat-icon>play_circle_outline</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
