@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/Subject';
 import { Task, TaskValue } from '../models/Task';
 // import { Axis } from '../models/Axis';
 
@@ -28,7 +28,7 @@ export class TaskService {
 
   private serverApi = 'http://localhost:3000';
 
-  private currentTaskProvider = new BehaviorSubject<Task>(this.defaultTask);
+  private currentTaskProvider = new Subject<Task>();
 
   currentTask$ = this.currentTaskProvider.asObservable();
 
@@ -56,7 +56,7 @@ export class TaskService {
       values: []
     };
     element.values.forEach( val => {
-      const valStruct: TaskValue = { axis: null, value: val.value };
+      const valStruct: TaskValue = { axis: null, axisId: val.axis, value: val.value };
       const axisId = val.axis;
       this.axisServ.getAxisById(axisId).subscribe( axis => valStruct.axis = axis );
       newTask.values.push(valStruct);

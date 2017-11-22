@@ -16,9 +16,9 @@ export class NumberAsStarsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(`constructing ${this.howMany} stars`);
+    // console.log(`constructing ${this.howMany} stars`);
     this.items = Array(this.howMany).fill(0);
-    console.log(this.items);
+    // console.log(this.items);
   }
 
 }

@@ -34,7 +34,7 @@ router.get('/axis', (request, response) => {
 });
 
 router.post('/axis', (request, response) => {
-    console.log(`Request body: ${JSON.stringify(request.body)}`);
+    console.log(`POST Axis Request body: ${JSON.stringify(request.body)}`);
     let newAxis = new Axis({
         name: request.body.name,
         description: request.body.description,
@@ -46,7 +46,7 @@ router.post('/axis', (request, response) => {
             response.json({success:false, message: `Failed to create new axis.  Error: ${err}`});
         }
         else {
-            response.json({success:true, message:"Successfully created new axis."});
+            response.json({success:true, message:"Successfully created new axis.", axis: axis});
         }
     });
 });

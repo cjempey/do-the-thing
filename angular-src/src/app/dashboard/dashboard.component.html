@@ -4,5 +4,5 @@
 <hr/>
 <h3>Tasks</h3>
 <button mat-button (click)="resetTasks()">Reset Tasks</button>
-<app-task-card [task]="currentTask" [@task]="currentTask" (taskComplete)="taskComplete($event)"></app-task-card>
+<app-task-card *ngFor="let currentTask of tasks" [task]="currentTask" (taskComplete)="taskComplete($event)"></app-task-card>
 </div>

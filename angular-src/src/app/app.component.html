@@ -7,8 +7,9 @@
 <mat-sidenav-container class="content-area">
 <mat-sidenav #sidenav mode="side" opened="false" color="primary">
   <mat-nav-list>
-    <a mat-list-item routerLink="/" routerLinkActive="active">Dashboard</a>
-    <a mat-list-item routerLink="/axes" routerLinkActive="active">Manage Axes</a>
+    <a mat-list-item routerLink="/" routerLinkActive="active" (click)="sidenav.close()">Dashboard</a>
+    <a mat-list-item routerLink="/axes" routerLinkActive="active" (click)="sidenav.close()">Manage Axes</a>
+    <a mat-list-item routerLink="/tasks" routerLinkActive="active" (click)="sidenav.close()">Enter Tasks</a>
   </mat-nav-list>
 </mat-sidenav>
 <div class="content-pane-container">

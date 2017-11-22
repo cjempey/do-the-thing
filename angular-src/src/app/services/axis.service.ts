@@ -12,7 +12,7 @@ export class AxisService {
 
   private serverApi = 'http://localhost:3000';
 
-  public allAxes(): Observable<Axis[]> {
+  public getAllAxes(): Observable<Axis[]> {
     const URI = `${this.serverApi}/api/axis`;
     return this.http.get(URI)
       .map(res => <Axis[]>res['axes']);
@@ -31,14 +31,14 @@ export class AxisService {
     return this.http.delete(URI);
   }
 
-  public addAxis(newAxis: Axis) {
+  public addAxis(newAxis: Axis): Observable<Object> {
     const URI = `${this.serverApi}/api/axis`;
     // const headers = new Headers;
-    const body = JSON.stringify({
+    const body = {
       name: newAxis.name,
       description: newAxis.description,
       weight: newAxis.weight
-    });
+    };
     console.log (`Adding new axis: ${body}`);
     // headers.append('Content-Type', 'application/json');
     return this.http.post(URI, body);

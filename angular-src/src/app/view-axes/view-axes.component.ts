@@ -41,7 +41,7 @@ export class ViewAxesComponent implements OnInit, AfterViewInit {
   }
 
   public loadAxes() {
-    this.axisServ.allAxes().subscribe( response => {this.axes = response; this.dataSource.data = this.axes; } );
+    this.axisServ.getAllAxes().subscribe( response => {this.axes = response; this.dataSource.data = this.axes; } );
   }
 
   public deleteAxis(axis: Axis) {

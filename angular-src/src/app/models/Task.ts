@@ -2,6 +2,7 @@ import { Axis } from './Axis';
 
 export interface TaskValue {
   axis: Axis;
+  axisId: string;
   value: Number;
 }
 export interface Task {

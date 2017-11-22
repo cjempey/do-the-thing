@@ -21,6 +21,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppComponent } from './app.component';
 import { AddAxisComponent } from './add-axis/add-axis.component';
@@ -32,11 +33,15 @@ import { AxisCardComponent } from './axis-card/axis-card.component';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { NumberAsStarsComponent } from './number-as-stars/number-as-stars.component';
 import { TaskEntryComponent } from './task-entry/task-entry.component';
+import { LightningTaskEntryComponent } from './lightning-task-entry/lightning-task-entry.component';
+import { SingleTaskEntryComponent } from './single-task-entry/single-task-entry.component';
+import { TaskListViewComponent } from './task-list-view/task-list-view.component';
 
 
 const appRoutes: Routes = [
- { path: 'axes', component: ViewAxesComponent },
- { path: ''    , component: DashboardComponent },
+ { path: 'axes' , component: ViewAxesComponent },
+ { path: 'tasks', component: TaskEntryComponent },
+ { path: ''     , component: DashboardComponent },
  { path: '**', redirectTo: '' }
 ];
 
@@ -49,14 +54,15 @@ const appRoutes: Routes = [
     AxisCardComponent,
     TaskCardComponent,
     NumberAsStarsComponent,
-    TaskEntryComponent
+    TaskEntryComponent,
+    LightningTaskEntryComponent,
+    SingleTaskEntryComponent,
+    TaskListViewComponent
   ],
   imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // for debug
-    ),
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     MatSidenavModule,
@@ -71,8 +77,8 @@ const appRoutes: Routes = [
     MatGridListModule,
     MatChipsModule,
     MatTooltipModule,
+    MatTabsModule
 
-    BrowserAnimationsModule
   ],
   providers: [ AxisService, TaskService ],
   bootstrap: [AppComponent]
