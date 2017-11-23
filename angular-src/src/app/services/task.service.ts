@@ -48,7 +48,7 @@ export class TaskService {
     this.currentTaskProvider.next(this.tasks.pop() || this.defaultTask);
   }
 
-  private createTask(element): Task {
+  private dbDocToTask(element): Task {
     const newTask: Task = {
       name: element.name,
       description: element.description,
@@ -71,7 +71,7 @@ export class TaskService {
       .map( resp => {
         const tasklist: Task[] = [];
         resp['tasks'].forEach(element => {
-          tasklist.push(this.createTask(element));
+          tasklist.push(this.dbDocToTask(element));
         });
         return tasklist;
       });

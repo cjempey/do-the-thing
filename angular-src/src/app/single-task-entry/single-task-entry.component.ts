@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Task } from '../models/Task';
 
 @Component({
   selector: 'app-single-task-entry',
@@ -8,9 +9,17 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class SingleTaskEntryComponent implements OnInit {
 
+  task: Task;
+
   constructor() { }
 
   ngOnInit() {
+    this.task = {
+      name: '',
+      description: '',
+      status: 'Not Started',
+      values: []
+    };
   }
 
 }

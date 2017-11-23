@@ -1,0 +1,12 @@
+<div>
+  <div class="axis">
+    axis goes here
+  </div>
+  <div class="value">
+    <ng-template *ngFor="let rating of ratings; index as idx">
+      <span (click)="setValue(idx)" (mouseenter)="setRating(idx)" (mouseleave)="setRating(value)">
+        <mat-icon>{{starIcon(idx)}}</mat-icon>
+      </span>
+    </ng-template>
+  </div>
+</div>

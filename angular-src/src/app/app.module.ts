@@ -36,6 +36,7 @@ import { TaskEntryComponent } from './task-entry/task-entry.component';
 import { LightningTaskEntryComponent } from './lightning-task-entry/lightning-task-entry.component';
 import { SingleTaskEntryComponent } from './single-task-entry/single-task-entry.component';
 import { TaskListViewComponent } from './task-list-view/task-list-view.component';
+import { TaskValueComponent } from './task-value/task-value.component';
 
 
 const appRoutes: Routes = [
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
     TaskEntryComponent,
     LightningTaskEntryComponent,
     SingleTaskEntryComponent,
-    TaskListViewComponent
+    TaskListViewComponent,
+    TaskValueComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
