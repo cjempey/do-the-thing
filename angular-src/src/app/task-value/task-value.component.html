@@ -1,12 +1,14 @@
 <div>
   <div class="axis">
-    axis goes here
+    <mat-form-field>
+      <mat-select [(value)]="axis" placeholder="Select Axis...">
+        <mat-option *ngFor="let axis of availableAxes" [value]="axis">{{axis.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
   <div class="value">
-    <ng-template *ngFor="let rating of ratings; index as idx">
-      <span (click)="setValue(idx)" (mouseenter)="setRating(idx)" (mouseleave)="setRating(value)">
-        <mat-icon>{{starIcon(idx)}}</mat-icon>
-      </span>
-    </ng-template>
+    <span *ngFor="let rating of ratings; index as idx" (click)="setValue(idx)" (mouseenter)="setRating(idx)" (mouseleave)="setRating(value)">
+      <mat-icon>{{starIcon(idx)}}</mat-icon>
+    </span>
   </div>
 </div>

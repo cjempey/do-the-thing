@@ -21,7 +21,11 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.taskServ.currentTask$.subscribe( currTask => { this.tasks.push( currTask ); } );
+    this.taskServ.currentTask$.subscribe( currTask => {
+      console.log (`dashboard received new current task: ${currTask}`);
+      this.tasks.push( currTask );
+      console.log (`dashboard now has ${this.tasks.length} current tasks registered`);
+    } );
   }
 
   public taskComplete(task: Task) {

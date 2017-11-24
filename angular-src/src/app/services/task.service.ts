@@ -35,7 +35,7 @@ export class TaskService {
   reset() {
     this.getAllTasks().subscribe(tasks => {
       this.tasks = tasks;
-      this.currentTaskProvider.next(this.tasks.pop());
+      this.currentTaskProvider.next(this.tasks.pop() || this.defaultTask);
     });
   }
 
@@ -65,8 +65,8 @@ export class TaskService {
   }
 
   public getAllTasks(): Observable<Task[]> {
-    console.log('Fetching all tasks from DB...');
     const URI = this.serverApi + '/api/task/';
+    console.log(`Fetching all tasks from ${URI}...`);
     return this.http.get(URI)
       .map( resp => {
         const tasklist: Task[] = [];
@@ -75,5 +75,10 @@ export class TaskService {
         });
         return tasklist;
       });
+  }
+
+  public saveTask(newTask: Task) {
+    const URI = this.serverApi + '/api/task/';
+    this.http.post(URI, newTask);
   }
 }

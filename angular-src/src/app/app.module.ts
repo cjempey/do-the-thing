@@ -22,6 +22,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { AddAxisComponent } from './add-axis/add-axis.component';
@@ -79,7 +80,8 @@ const appRoutes: Routes = [
     MatGridListModule,
     MatChipsModule,
     MatTooltipModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSelectModule
 
   ],
   providers: [ AxisService, TaskService ],

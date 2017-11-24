@@ -2,15 +2,18 @@
   width: 100%
 }
 
-.contentContainer {
+.columns-3-to-1 {
   display: flex;
 }
 
-.descContainer {
+.leftColumn {
   flex: 3;
 }
 
-.valContainer {
+.rightColumn {
   flex: 1;
 }
 
+.valuesList {
+  list-style-type: none;
+}

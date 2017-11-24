@@ -127,8 +127,14 @@ router.post('/task', (request, response) => {
         name: request.body.name,
         description: request.body.description,
         status: 'Not Started',
-        values: request.body.values
+        values: []
     });
+    for (let item of request.body.values) {
+        newTask.values.push({
+            axis: item.axis._id,
+            value: item.value
+        });
+    }
     Task.addTask(newTask, (err, task) => {
         if (err) {
             response.json({ success: false, message: `Failed to add new task. Error: ${err}` });

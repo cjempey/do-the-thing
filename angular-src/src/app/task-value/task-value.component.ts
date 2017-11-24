@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { TaskValue } from '../models/Task';
+import { Axis } from '../models/Axis';
 
 @Component({
   selector: 'app-task-value',
@@ -7,15 +9,24 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class TaskValueComponent implements OnInit {
+  axis: Axis;
+  value: Number = 0;
 
   ratings = [1, 2, 3, 4, 5];
-  value: Number = 0;
   rating: Number = 0;
 
-  constructor() { }
+  @Input() availableAxes: Axis[] = [];
+  @Output() valueUpdate: EventEmitter<TaskValue> = new EventEmitter<TaskValue>();
+
+  constructor() {
+    console.log('task-value constructor');
+  }
 
   ngOnInit() {
+    console.log('task-value onInit');
   }
+
+
 
   public starIcon(index): string {
     if (index <= this.rating) {
@@ -33,5 +44,17 @@ export class TaskValueComponent implements OnInit {
 
   public setValue(rate: Number) {
     this.value = rate;
+    this.publish();
+  }
+
+  private publish() {
+    const taskVal: TaskValue = {
+      axis: this.axis,
+      axisId: this.axis._id,
+      value: this.value
+    };
+
+    console.log (`task-value publishing ${JSON.stringify(taskVal)}`)
+    this.valueUpdate.emit(taskVal);
   }
 }

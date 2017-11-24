@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Task } from '../models/Task';
+import { Task, TaskValue } from '../models/Task';
+import { Axis } from '../models/Axis';
+import { AxisService } from '../services/axis.service';
+import { TaskService } from '../services/task.service';
 
 @Component({
   selector: 'app-single-task-entry',
@@ -11,9 +14,18 @@ export class SingleTaskEntryComponent implements OnInit {
 
   task: Task;
 
-  constructor() { }
+  availableAxes: Axis[] = [];
+
+  constructor(private axisServ: AxisService, private taskServ: TaskService) {
+  }
 
   ngOnInit() {
+    this.resetTask();
+
+    this.axisServ.getAllAxes().subscribe( axes => this.availableAxes = axes );
+  }
+
+  private resetTask() {
     this.task = {
       name: '',
       description: '',
@@ -22,4 +34,31 @@ export class SingleTaskEntryComponent implements OnInit {
     };
   }
 
+  public addValue() {
+    this.task.values.push({
+      axis: null,
+      axisId: null,
+      value: 0
+    });
+  }
+
+  public updateValue(value: TaskValue) {
+    console.log(`single-task-entry update-value received ${value.json}`);
+    if (value.axis) {
+      let val = this.task.values.find( el => el.axis._id === value.axis._id );
+      // If we didn't find an axis match, look for a null and give it the new axis
+      if (!val) {
+        val = this.task.values.find( el => el.axis === null);
+        val.axis = value.axis;
+        val.axisId = value.axis._id;
+        this.availableAxes.splice(this.availableAxes.indexOf(value.axis), 1);
+      }
+      val.value = value.value;
+    }
+  }
+
+  public saveTask() {
+    this.taskServ.saveTask(this.task);
+    this.resetTask();
+  }
 }

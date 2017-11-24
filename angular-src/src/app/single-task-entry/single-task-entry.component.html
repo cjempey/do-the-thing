@@ -1,35 +1,39 @@
   <mat-card>
-    <mat-card-title>
-      <mat-form-field>
-        <input name="taskName" type="text" matInput placeholder="Task Name" [(ngModel)]="task.name">
-      </mat-form-field>
-    </mat-card-title>
-    <mat-card-subtitle>
+    <section class="columns-3-to-1">
+      <div class="leftColumn">
+        <mat-card-title class="leftColumn">
+          <mat-form-field>
+            <input name="taskName" type="text" matInput placeholder="Task Name" [(ngModel)]="task.name">
+          </mat-form-field>
+        </mat-card-title>
+      </div>
+      <div class="rightColumn">
+        <button mat-raised-button color="accent" (click)="addValue()">Add Value</button>
+      </div>
+    </section>
+    <div>
+      <mat-card-subtitle>
         {{task.status}}
-    </mat-card-subtitle>
-    <section class="contentContainer">
-      <div class="descContainer">
+      </mat-card-subtitle>
+    </div>
+    <section class="columns-3-to-1">
+      <div class="leftColumn">
         <mat-form-field class="task-description">
           <textarea matInput placeholder="Description" [(ngModel)]="task.description" name="taskDesc"></textarea>
         </mat-form-field>
       </div>
-      <div class="valContainer">
-        <mat-list>
-            <mat-list-item *ngFor="let val of task.values">
-              {{val?.axis?.name}}: <app-number-as-stars [howMany]="val?.value"></app-number-as-stars>
-            </mat-list-item>
-        </mat-list>
+      <div class="rightColumn">
+        <!-- TODO: Use CSS Flexbox rather than mat-list -->
+        <ul class="valuesList">
+            <li *ngFor="let val of task.values">
+              <app-task-value [availableAxes]="availableAxes" (valueUpdate)="updateValue($event)">Task value component</app-task-value>
+            </li>
+        </ul>
       </div>
     </section>
     <mat-card-actions>
-      <button mat-mini-fab aria-label="done" matTooltip="Done" matTooltipShowDelay="500" matTooltipHideDelay="1000" (click)="taskDone()">
-        <mat-icon>done</mat-icon>
-      </button>
-      <button mat-mini-fab aria-label="defer" matTooltip="Defer" matTooltipShowDelay="500" matTooltipHideDelay="1000">
-        <mat-icon>alarm</mat-icon>
-      </button>
-      <button mat-mini-fab aria-label="start" matTooltip="Start" matTooltipShowDelay="500" matTooltipHideDelay="1000">
-        <mat-icon>play_circle_outline</mat-icon>
+      <button mat-mini-fab aria-label="save" matTooltip="Done" matTooltipShowDelay="500" matTooltipHideDelay="1000" (click)="saveTask()">
+        <mat-icon>save</mat-icon>
       </button>
     </mat-card-actions>
   </mat-card>
