@@ -24,7 +24,7 @@
   "homepage": "https://github.com/cjempey/do-the-thing#readme",
   "dependencies": {
     "express": "~4.16.2",
-    "mongoose": "~4.13.1",
+    "mongoose": "~5.7.5",
     "cors": "~2.8.4",
     "body-parser": "~1.18.2"
   },
